@@ -20,4 +20,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
+    //Flow
+    implementation(libs.kotlinx.coroutines.core)
+    //Utils
+    implementation(projects.utils)
 }

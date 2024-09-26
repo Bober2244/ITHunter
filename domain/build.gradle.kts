@@ -10,5 +10,10 @@ java {
 
 dependencies {
     //Koin
-    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    //Flow
+    implementation(libs.kotlinx.coroutines.core)
+    //Modules
+    implementation(projects.utils)
+    implementation(projects.data)
 }
