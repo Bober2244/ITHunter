@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "ITHunter"
 include(":app")
+include(":data")
+include(":domain")
+include(":presentation")
+include(":utils")
