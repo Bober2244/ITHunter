@@ -6,8 +6,13 @@ data class ResultDto(
     val offers: OffersDto,
     val vacancies: VacanciesDto,
 ) {
-    fun toModel() = ResultModel(
-        offers.toModel(),
-        vacancies.toModel()
-    )
+    //TODO: Может вернуть null, надо обработать ошибку
+    fun toModel() = offers.toModel()?.let { offers ->
+        vacancies.toModel()?.let { vacancies ->
+            ResultModel(
+                offers = offers,
+                vacancies = vacancies
+            )
+        }
+    }
 }
