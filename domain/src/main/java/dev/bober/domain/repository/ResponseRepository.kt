@@ -1,8 +1,9 @@
 package dev.bober.domain.repository
 
-import dev.bober.domain.utils.Resource
+import dev.bober.domain.model.ResultModel
+import dev.bober.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface ResponseRepository {
-    fun getData() : Flow<Resource<Unit>>
+    suspend fun getData() : Flow<Resource<ResultModel>>
 }

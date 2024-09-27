@@ -11,5 +11,5 @@ interface Api {
         id: String,
         @Query("export")
         export: String
-    ): ResultDto
+    ): Result<ResultDto>
 }

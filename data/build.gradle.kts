@@ -1,13 +1,37 @@
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
-    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+android {
+    namespace = "dev.bober.data"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
+    defaultConfig {
+        minSdk = libs.versions.minSdk.get().toInt()
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -15,13 +39,14 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     //Koin
-    implementation(libs.koin.core)
+    implementation(libs.koin.android)
     //Room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
     //Flow
     implementation(libs.kotlinx.coroutines.core)
-    //Utils
+    //Modules
     implementation(projects.utils)
+    implementation(projects.domain)
 }

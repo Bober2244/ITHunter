@@ -4,6 +4,8 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import dev.bober.data.Api
 import dev.bober.data.repository.ResponseRepositoryImpl
+import dev.bober.domain.repository.ResponseRepository
+import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -23,7 +25,7 @@ val dataModule = module {
 
     single { GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).create() }
 
-    singleOf(::ResponseRepositoryImpl)
+    singleOf(::ResponseRepositoryImpl) { bind<ResponseRepository>() }
 }
 
 private const val BASE_URL = "https://drive.usercontent.google.com/u/0/uc"
