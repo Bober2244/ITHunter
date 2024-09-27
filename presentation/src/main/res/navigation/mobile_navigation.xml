@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO: поменять id на mobile_navigation -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_1"
+    app:startDestination="@+id/navigation_search">
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="dev.bober.presentation.search.SearchScreen"
+        android:label="@string/title_search"
+        tools:layout="@layout/search_screen" />
+
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="dev.bober.presentation.favorite.FavoriteScreen"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/favorite_screen" />
+
+    <fragment
+        android:id="@+id/navigation_response"
+        android:name="dev.bober.presentation.response.ResponseScreen"
+        android:label="@string/title_response"
+        tools:layout="@layout/response_screen" />
+
+    <fragment
+        android:id="@+id/navigation_messages"
+        android:name="dev.bober.presentation.messages.MessagesScreen"
+        android:label="@string/title_messages"
+        tools:layout="@layout/messages_screen" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="dev.bober.presentation.profile.ProfileScreen"
+        android:label="@string/title_profile"
+        tools:layout="@layout/profile_screen" />
+</navigation>
