@@ -13,4 +13,9 @@
     <string name="search_workers_text">Поиск сотрудников</string>
     <string name="under_workers_text">Размещение вакансий и доступ к базе резюме</string>
     <string name="search_eorkers_button_text">Я ищу сотрудников</string>
+    <string name="respond_button_text">Откликнуться</string>
+    <string name="search_hint_text">Поиск вакансий</string>
+    <string name="vacancies_title_text">Вакансии для вас</string>
+    <string name="search_hint">Должность по подходящим вакансиям</string>
+    <string name="filter_text">По соответствию</string>
 </resources>

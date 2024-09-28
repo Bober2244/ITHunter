@@ -9,4 +9,7 @@
     <dimen name="button_text_2">14sp</dimen>
     <dimen name="tab_text">10sp</dimen>
     <dimen name="number">7sp</dimen>
+    <dimen name="bg_vacancy_card_radius">8dp</dimen>
+    <dimen name="bg_respond_button_radius">24dp</dimen>
+    <dimen name="screens_inner_padding">10dp</dimen>
 </resources>

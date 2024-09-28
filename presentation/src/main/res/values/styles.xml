@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.ITHunter.Button" parent="Widget.Material3.Button">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="Theme.ITHunter.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.ITHunter.TextStyle" parent="Widget.Material3.AppBarLayout">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_1</item>
+    </style>
+
+    <style name="Theme.ITHunter.MediumTextStyle" parent="Widget.Material3.AppBarLayout">
+        <item name="android:textColor">@color/gray_3</item>
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Theme.ITHunter.LargeTextStyle" parent="Widget.Material3.AppBarLayout">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/medium</item>
+        <item name="android:textSize">@dimen/title_2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.ITHunter.TitleTextStyle" parent="Theme.ITHunter.LargeTextStyle">
+        <item name="android:textSize">@dimen/title_3</item>
+        <item name="fontFamily">@font/semibold</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Theme.ITHunter.FiltersTextStyle" parent="Theme.ITHunter.MediumTextStyle">
+        <item name="android:textColor">@color/blue</item>
+    </style>
 
 </resources>
