@@ -60,4 +60,6 @@ dependencies {
     implementation(libs.koin.android)
     //Modules
     implementation(projects.presentation)
+    implementation(projects.domain)
+    implementation(projects.data)
 }

@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.bober.presentation.R
+import dev.bober.presentation.databinding.ResponseScreenBinding
 
 class ResponseScreen : Fragment(R.layout.response_screen) {
+
+    private var _binding : ResponseScreenBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -15,5 +20,10 @@ class ResponseScreen : Fragment(R.layout.response_screen) {
     ): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

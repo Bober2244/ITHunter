@@ -1,6 +1,9 @@
 package dev.bober.ithunter
 
 import android.app.Application
+import dev.bober.data.di.dataModule
+import dev.bober.domain.di.domainModule
+import dev.bober.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,7 +16,9 @@ class App : Application() {
             androidLogger()
             androidContext(this@App)
             modules(
-                //TODO: добавить модули
+                dataModule,
+                domainModule,
+                presentationModule
             )
         }
     }

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import dev.bober.presentation.R
 import dev.bober.presentation.databinding.FavoriteScreenBinding
 
-class FavoriteScreen : Fragment(R.layout.favorite_screen) {
+class FavoriteScreen : Fragment() {
 
     private var _binding: FavoriteScreenBinding? = null
     private val binding get() = _binding!!
@@ -18,7 +18,12 @@ class FavoriteScreen : Fragment(R.layout.favorite_screen) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        _binding = FavoriteScreenBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
