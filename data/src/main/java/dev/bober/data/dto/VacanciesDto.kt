@@ -1,46 +1,39 @@
 package dev.bober.data.dto
 
-import dev.bober.domain.model.VacanciesModel
+import dev.bober.domain.model.VacancyModel
 
 data class VacanciesDto(
     val id : String,
     val lookingNumber : Int = 0,
-    val title : String = "",
-    val address : AddressDto? = null,
+    val title : String,
+    val address : AddressDto,
     val company : String,
-    val experience : ExperienceDto? = null,
+    val experience : ExperienceDto,
     val publishedDate : String,
-    val isFavorite : String = "",
-    val salary : SalaryDto? = null,
-    val schedules : List<String> = emptyList(),
+    val isFavorite : String,
+    val salary : SalaryDto,
+    val schedules : List<String>,
     val appliedNumber : Int = 0,
     val description : String = "",
-    val responsibilities : String = "",
-    val questions : List<String> = emptyList(),
+    val responsibilities : String,
+    val questions : List<String>,
 ) {
-    //TODO: Может вернуть null, надо обработать ошибку
-    fun toModel(): VacanciesModel? {
-        return address?.let {
-            salary?.let { salary ->
-                experience?.let { experience ->
-                    VacanciesModel(
-                        id = id,
-                        lookingNumber = lookingNumber,
-                        title = title,
-                        address = it.toModel(),
-                        company = company,
-                        experience = experience.toModel(),
-                        publishedDate = publishedDate,
-                        isFavorite = isFavorite,
-                        salary = salary.toModel(),
-                        schedules = schedules,
-                        appliedNumber = appliedNumber,
-                        description = description,
-                        responsibilities = responsibilities,
-                        questions = questions,
-                    )
-                }
-            }
-        }
+    fun toModel(): VacancyModel {
+        return VacancyModel(
+            id = id,
+            lookingNumber = lookingNumber,
+            title = title,
+            address = address.toModel(),
+            company = company,
+            experience = experience.toModel(),
+            publishedDate = publishedDate,
+            isFavorite = isFavorite,
+            salary = salary.toModel(),
+            schedules = schedules,
+            appliedNumber = appliedNumber,
+            description = description,
+            responsibilities = responsibilities,
+            questions = questions,
+        )
     }
 }

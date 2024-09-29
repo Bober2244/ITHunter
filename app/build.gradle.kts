@@ -58,4 +58,6 @@ dependencies {
     implementation(libs.leakcanary.android)
     //Koin
     implementation(libs.koin.android)
+    //Modules
+    implementation(projects.presentation)
 }

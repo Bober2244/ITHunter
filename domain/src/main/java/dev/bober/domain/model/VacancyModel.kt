@@ -1,6 +1,6 @@
 package dev.bober.domain.model
 
-data class VacanciesModel(
+data class VacancyModel(
     val id : String,
     val lookingNumber : Int,
     val title : String,

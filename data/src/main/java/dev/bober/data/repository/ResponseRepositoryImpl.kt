@@ -1,12 +1,10 @@
 package dev.bober.data.repository
 
-import dev.bober.data.Api
-import dev.bober.data.dto.ResultDto
+import dev.bober.data.api.Api
 import dev.bober.domain.model.ResultModel
 import dev.bober.domain.repository.ResponseRepository
 import dev.bober.utils.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 
 class ResponseRepositoryImpl(

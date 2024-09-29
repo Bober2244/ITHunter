@@ -1,6 +1,6 @@
 package dev.bober.domain.model
 
-data class OffersModel(
+data class OfferModel(
     val id : String,
     val title : String,
     val button : ButtonModel,

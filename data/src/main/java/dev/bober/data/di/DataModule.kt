@@ -2,7 +2,7 @@ package dev.bober.data.di
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
-import dev.bober.data.Api
+import dev.bober.data.api.Api
 import dev.bober.data.repository.ResponseRepositoryImpl
 import dev.bober.domain.repository.ResponseRepository
 import org.koin.core.module.dsl.bind

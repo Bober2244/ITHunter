@@ -1,4 +1,4 @@
-package dev.bober.data
+package dev.bober.data.api
 
 import dev.bober.data.dto.ResultDto
 import retrofit2.http.GET
