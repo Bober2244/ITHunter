@@ -18,7 +18,7 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/recom_title"
         style="@style/Theme.ITHunter.TextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/green"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/recom_title"
+        app:layout_constraintTop_toBottomOf="@+id/recom_title"
         tools:text="Поднять" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

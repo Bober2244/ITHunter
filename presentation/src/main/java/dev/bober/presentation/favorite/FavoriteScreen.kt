@@ -11,7 +11,7 @@ import dev.bober.presentation.databinding.FavoriteScreenBinding
 class FavoriteScreen : Fragment() {
 
     private var _binding: FavoriteScreenBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding!!) {"Binding wasn't initialized"}
 
     override fun onCreateView(
         inflater: LayoutInflater,

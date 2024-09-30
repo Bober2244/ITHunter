@@ -10,7 +10,7 @@ data class VacanciesDto(
     val company : String,
     val experience : ExperienceDto,
     val publishedDate : String,
-    val isFavorite : String,
+    val isFavorite : Boolean,
     val salary : SalaryDto,
     val schedules : List<String>,
     val appliedNumber : Int = 0,

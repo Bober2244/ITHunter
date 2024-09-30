@@ -53,4 +53,8 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     //Modules
     implementation(projects.domain)
+    implementation(projects.utils)
+    //Flow
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }

@@ -1,7 +1,12 @@
-package dev.bober.domain.model
+package dev.bober.presentation.model
 
-data class VacancyModel(
-    val id : String,
+import dev.bober.domain.model.AddressModel
+import dev.bober.domain.model.ExperienceModel
+import dev.bober.domain.model.SalaryModel
+import dev.bober.presentation.adapter.DelegateItem
+
+data class Vacancy(
+    override val id : String,
     val lookingNumber : Int,
     val title : String,
     val address : AddressModel,
@@ -15,4 +20,4 @@ data class VacancyModel(
     val description : String,
     val responsibilities : String,
     val questions : List<String>,
-)
+) : DelegateItem

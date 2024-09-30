@@ -11,7 +11,7 @@ import dev.bober.presentation.databinding.ProfileScreenBinding
 class ProfileScreen : Fragment(R.layout.profile_screen) {
 
     private var _binding : ProfileScreenBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding!!) {"Binding wasn't initialized"}
 
     override fun onCreateView(
         inflater: LayoutInflater,
