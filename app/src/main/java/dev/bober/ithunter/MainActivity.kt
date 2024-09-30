@@ -1,18 +1,15 @@
 package dev.bober.ithunter
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.bober.ithunter.databinding.ActivityMainBinding
-import dev.bober.presentation.search.SearchScreen
 
 class MainActivity : AppCompatActivity() {
 
