@@ -2,6 +2,7 @@ package dev.bober.presentation.search.recyclers
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
@@ -37,15 +38,25 @@ class VacanciesDelegate : AdapterDelegate {
         @SuppressLint("SetTextI18n")
         fun bind(model: Vacancy) {
             with(binding) {
-                viewers.text = "Сейчас просматривает ${model.lookingNumber} человек"
-                //TODO: visibility поменять на state_checked/unchecked
-                favoriteIcon.visibility = if (model.isFavorite) VISIBLE else GONE
+                checkField(viewers, model.lookingNumber) {
+                    viewers.text = "Сейчас просматривает ${model.lookingNumber} человек"
+                }
+                favoriteIcon.isSelected = model.isFavorite
                 jobTitle.text = model.title
-                salary.text = model.salary.full //TODO: выбор full/short
-                city.text = model.address.town //TODO: выбор town/street/house
+                salary.text = model.salary.short ?: model.salary.full
+                city.text = model.address.town
                 company.text = model.company
-                experience.text = model.experience.text //TODO: выбор text/previewText
+                experience.text = model.experience.previewText
                 publishedDate.text = model.publishedDate //TODO: сделать парсинг даты
+            }
+        }
+
+        private fun <T> checkField(view : View, field : Any?, block : () -> T){
+            if (field != null) {
+                view.visibility = VISIBLE
+                block()
+            } else {
+                view.visibility = GONE
             }
         }
     }

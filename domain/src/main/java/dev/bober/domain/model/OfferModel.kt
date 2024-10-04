@@ -1,8 +1,8 @@
 package dev.bober.domain.model
 
 data class OfferModel(
-    val id : String,
+    val id : String? = null,//?
     val title : String,
-    val button : ButtonModel,
+    val button : String? = null,//?
     val link : String,
 )

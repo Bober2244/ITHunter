@@ -12,10 +12,24 @@ class ResponseRepositoryImpl(
     ) : ResponseRepository {
     override suspend fun getData() : Flow<Resource<ResultModel>> = flow {
         emit(Resource.Loading())
-        api.getData(ID, EXPORT).fold(
-            onSuccess = { emit(Resource.Success(it.toModel())) },
+        try {
+            val response = api.getData(ID, EXPORT)
+            emit(Resource.Success(response.toModel()))
+        } catch (e : Exception) {
+            emit(Resource.Error(e))
+            e.printStackTrace()
+        }
+        /*api.getData(ID, EXPORT).fold(
+            onSuccess = {
+                try {
+                    emit(Resource.Success(it.toModel()))
+                } catch (e: Exception) {
+                    emit(Resource.Error(e))
+                    e.printStackTrace()
+                }
+            },
             onFailure = { emit(Resource.Error(it)) }
-        )
+        )*/
     }
 }
 

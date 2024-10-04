@@ -7,6 +7,7 @@ import dev.bober.data.repository.ResponseRepositoryImpl
 import dev.bober.domain.repository.ResponseRepository
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -37,4 +38,4 @@ val dataModule = module {
     singleOf(::ResponseRepositoryImpl) { bind<ResponseRepository>() }
 }
 
-private const val BASE_URL = "https://drive.usercontent.google.com/u/0/uc"
+private const val BASE_URL = "https://drive.usercontent.google.com/u/0/"

@@ -38,6 +38,8 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
     //Koin
     implementation(libs.koin.android)
     //Room
@@ -49,4 +51,6 @@ dependencies {
     //Modules
     implementation(projects.utils)
     implementation(projects.domain)
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
 }

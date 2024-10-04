@@ -5,11 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Api {
-    @GET
+    @GET("uc")
     suspend fun getData(
-        @Query("id")
-        id: String,
-        @Query("export")
-        export: String
-    ): Result<ResultDto>
+        @Query("id") id: String,
+        @Query("export") export: String
+    ): ResultDto //Result<ResultDto>
 }

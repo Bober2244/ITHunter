@@ -1,10 +1,12 @@
 package dev.bober.data.dto
 
 import dev.bober.domain.model.VacancyModel
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class VacanciesDto(
     val id : String,
-    val lookingNumber : Int = 0,
+    val lookingNumber : Int? = null,
     val title : String,
     val address : AddressDto,
     val company : String,
@@ -13,8 +15,8 @@ data class VacanciesDto(
     val isFavorite : Boolean,
     val salary : SalaryDto,
     val schedules : List<String>,
-    val appliedNumber : Int = 0,
-    val description : String = "",
+    val appliedNumber : Int? = null,
+    val description : String? = null,
     val responsibilities : String,
     val questions : List<String>,
 ) {

@@ -7,7 +7,7 @@ import dev.bober.presentation.adapter.DelegateItem
 
 data class Vacancy(
     override val id : String,
-    val lookingNumber : Int,
+    val lookingNumber : Int?,
     val title : String,
     val address : AddressModel,
     val company : String,

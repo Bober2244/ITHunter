@@ -4,8 +4,8 @@ import dev.bober.domain.model.ButtonModel
 import dev.bober.presentation.adapter.DelegateItem
 
 data class Offer(
-    override val id : String,
+    override val id : String? = null,
     val title : String,
-    val button : ButtonModel,
+    val button : String?,
     val link : String,
 ) : DelegateItem

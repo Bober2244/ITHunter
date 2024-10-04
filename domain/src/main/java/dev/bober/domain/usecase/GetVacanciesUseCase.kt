@@ -1,12 +1,9 @@
 package dev.bober.domain.usecase
 
-import android.util.Log
-import dev.bober.domain.model.OfferModel
 import dev.bober.domain.model.VacancyModel
 import dev.bober.domain.repository.ResponseRepository
 import dev.bober.utils.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 
 class GetVacanciesUseCase(

@@ -7,8 +7,7 @@
     android:background="@drawable/bg_vacancy_card"
     android:padding="16dp"
     android:layout_marginVertical="6dp"
-    android:layout_marginHorizontal="2dp"
-    style="@style/Theme.ITHunter.Card">
+    android:layout_marginHorizontal="2dp">
 
     <TextView
         android:id="@+id/viewers"
@@ -65,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Еком дизайн"
-        style="@style/Theme.ITHunter.Card"
+        style="@style/Theme.ITHunter.TextStyle"
         app:layout_constraintStart_toStartOf="@+id/city"
         app:layout_constraintTop_toBottomOf="@id/city" />
 
