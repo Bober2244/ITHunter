@@ -1,4 +1,4 @@
-package dev.bober.presentation.model
+package dev.bober.presentation.entity
 
 import dev.bober.domain.model.AddressModel
 import dev.bober.domain.model.ExperienceModel

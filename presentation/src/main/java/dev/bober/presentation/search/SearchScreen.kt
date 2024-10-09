@@ -13,16 +13,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.adapter.MainAdapter
 import dev.bober.presentation.adapter.utils.concatenateWithOffers
 import dev.bober.presentation.databinding.SearchScreenBinding
-import dev.bober.presentation.search.recyclers.RecommendationsDelegate
+import dev.bober.presentation.search.recyclers.RecommendationsListDelegate
 import dev.bober.presentation.search.recyclers.VacanciesDelegate
 import dev.bober.utils.Resource
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import dev.bober.presentation.adapter.utils.concatenateWithVacancy
-import dev.bober.presentation.model.Vacancy
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import org.koin.core.parameter.parametersOf
 
 class SearchScreen : Fragment() {
 
@@ -45,7 +41,7 @@ class SearchScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter.apply {
-            addDelegate(RecommendationsDelegate())
+            addDelegate(RecommendationsListDelegate())
             addDelegate(VacanciesDelegate())
         }
 
@@ -93,13 +89,11 @@ class SearchScreen : Fragment() {
         viewModel.loadVacancies()
 
         binding.vacancies.adapter = adapter
-        binding.recommendationsList.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding.vacancies.adapter = null
-        binding.recommendationsList.adapter = null
         _binding = null
     }
 }

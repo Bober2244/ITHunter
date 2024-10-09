@@ -6,13 +6,10 @@ import dev.bober.domain.model.OfferModel
 import dev.bober.domain.model.VacancyModel
 import dev.bober.domain.usecase.GetOffersUseCase
 import dev.bober.domain.usecase.GetVacanciesUseCase
-import dev.bober.presentation.model.Vacancy
 import dev.bober.utils.Resource
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SearchViewModel(

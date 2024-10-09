@@ -3,8 +3,8 @@ package dev.bober.presentation.adapter.utils
 import dev.bober.domain.model.OfferModel
 import dev.bober.domain.model.VacancyModel
 import dev.bober.presentation.adapter.DelegateItem
-import dev.bober.presentation.model.Offer
-import dev.bober.presentation.model.Vacancy
+import dev.bober.presentation.entity.Offer
+import dev.bober.presentation.entity.Vacancy
 
 fun List<VacancyModel>.concatenateWithOffers(offers: List<Offer>): List<DelegateItem> {
     val delegateItemList: MutableList<DelegateItem> = mutableListOf()
@@ -20,35 +20,29 @@ fun List<VacancyModel>.concatenateWithOffers(offers: List<Offer>): List<Delegate
         )
     }
     this.forEach { model ->
-        model.description?.let {
-            model.appliedNumber?.let { it1 ->
-                Vacancy(
-                    id = model.id,
-                    lookingNumber = model.lookingNumber,
-                    title = model.title,
-                    address = model.address,
-                    company = model.company,
-                    experience = model.experience,
-                    publishedDate = model.publishedDate,
-                    isFavorite = model.isFavorite,
-                    salary = model.salary,
-                    schedules = model.schedules,
-                    appliedNumber = it1,
-                    description = it,
-                    responsibilities = model.responsibilities,
-                    questions = model.questions,
-                )
-            }
-        }?.let {
-            delegateItemList.add(
-                it
+        delegateItemList.add(
+            Vacancy(
+                id = model.id,
+                lookingNumber = model.lookingNumber,
+                title = model.title,
+                address = model.address,
+                company = model.company,
+                experience = model.experience,
+                publishedDate = model.publishedDate,
+                isFavorite = model.isFavorite,
+                salary = model.salary,
+                schedules = model.schedules,
+                appliedNumber = model.appliedNumber ?: 0,
+                description = model.description ?: "",
+                responsibilities = model.responsibilities,
+                questions = model.questions,
             )
-        }
+        )
     }
     return delegateItemList
 }
 
-fun List<OfferModel>.concatenateWithVacancy(vacancies : List<Vacancy>): MutableList<DelegateItem> {
+fun List<OfferModel>.concatenateWithVacancy(vacancies: List<Vacancy>): MutableList<DelegateItem> {
     val delegateItemList: MutableList<DelegateItem> = mutableListOf()
 
     vacancies.forEach { model ->
@@ -72,20 +66,14 @@ fun List<OfferModel>.concatenateWithVacancy(vacancies : List<Vacancy>): MutableL
         )
     }
     this.forEach { model ->
-        model.id?.let {
-            model.button?.let { it1 ->
-                Offer(
-                    id = it,
-                    title = model.title,
-                    button = it1,
-                    link = model.link
-                )
-            }
-        }?.let {
-            delegateItemList.add(
-                it
+        delegateItemList.add(
+            Offer(
+                id = model.id,
+                title = model.title,
+                button = model.button ?: "",
+                link = model.link
             )
-        }
+        )
     }
     return delegateItemList
 }

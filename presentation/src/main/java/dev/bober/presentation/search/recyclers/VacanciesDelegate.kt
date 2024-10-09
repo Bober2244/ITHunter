@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.bober.presentation.adapter.AdapterDelegate
 import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.VacancyCardBinding
-import dev.bober.presentation.model.Vacancy
+import dev.bober.presentation.entity.Vacancy
 
 class VacanciesDelegate : AdapterDelegate {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
