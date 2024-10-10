@@ -51,7 +51,7 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
             with(binding) {
                 topIcon.setImageResource(imageRes)
                 recomTitle.text = item.title
-                linkButton.visibility = if (item.button?.isEmpty() == true) GONE else VISIBLE
+                linkButton.visibility = if (item.button.isNullOrEmpty()) GONE else VISIBLE
                 linkButton.text = item.button
                 root.visibility = if (item.id in ids) VISIBLE else GONE
             }

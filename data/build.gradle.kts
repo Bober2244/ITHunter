@@ -42,10 +42,6 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     //Koin
     implementation(libs.koin.android)
-    //Room
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
     //Flow
     implementation(libs.kotlinx.coroutines.core)
     //Modules

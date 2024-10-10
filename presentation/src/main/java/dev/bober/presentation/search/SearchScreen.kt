@@ -10,7 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.adapter.MainAdapter
+import dev.bober.presentation.adapter.utils.concatenateWithVacancies
+import dev.bober.presentation.adapter.utils.concatenateWithOffer
 import dev.bober.presentation.adapter.utils.concatenateWithOffers
 import dev.bober.presentation.databinding.SearchScreenBinding
 import dev.bober.presentation.search.recyclers.RecommendationsListDelegate
@@ -27,6 +30,8 @@ class SearchScreen : Fragment() {
 
     private val viewModel : SearchViewModel by viewModel()
     private val adapter : MainAdapter by lazy { MainAdapter() }
+
+    private var data = mutableListOf<DelegateItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +64,8 @@ class SearchScreen : Fragment() {
                         ).show()
                         is Resource.Success -> {
                             val offers = res.data
-                            adapter.submitList(offers.concatenateWithVacancy(listOf()))
+                            data.concatenateWithOffers(offers)
+                            adapter.submitList(data)
                         }
                     }
                 }
@@ -69,17 +75,18 @@ class SearchScreen : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(
                 state = Lifecycle.State.STARTED
             ) {
-                viewModel.vacancyState.collect { result ->
-                    when (result) {
+                viewModel.vacancyState.collect { res ->
+                    when (res) {
                         is Resource.Loading -> Log.i("Vacancies", "Loading vacancies")
                         is Resource.Error -> Toast.makeText(
                             context,
-                            result.error.toString(),
+                            res.error.toString(),
                             Toast.LENGTH_SHORT
                         ).show()
                         is Resource.Success -> {
-                            val vacancies = result.data
-                            adapter.submitList(vacancies.concatenateWithOffers(listOf()))
+                            val vacancies = res.data
+                            data.concatenateWithVacancies(vacancies)
+                            adapter.submitList(data)
                         }
                     }
                 }

@@ -16,8 +16,8 @@ data class Vacancy(
     val isFavorite : Boolean,
     val salary : SalaryModel,
     val schedules : List<String>,
-    val appliedNumber : Int,
-    val description : String,
+    val appliedNumber : Int?,
+    val description : String?,
     val responsibilities : String,
     val questions : List<String>,
 ) : DelegateItem
