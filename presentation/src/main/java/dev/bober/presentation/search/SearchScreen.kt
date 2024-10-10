@@ -12,16 +12,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.adapter.MainAdapter
-import dev.bober.presentation.adapter.utils.concatenateWithVacancies
-import dev.bober.presentation.adapter.utils.concatenateWithOffer
+import dev.bober.presentation.adapter.utils.concatenate
 import dev.bober.presentation.adapter.utils.concatenateWithOffers
+import dev.bober.presentation.adapter.utils.concatenateWithVacancies
 import dev.bober.presentation.databinding.SearchScreenBinding
 import dev.bober.presentation.search.recyclers.RecommendationsListDelegate
 import dev.bober.presentation.search.recyclers.VacanciesDelegate
 import dev.bober.utils.Resource
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import dev.bober.presentation.adapter.utils.concatenateWithVacancy
 
 class SearchScreen : Fragment() {
 
@@ -50,50 +50,30 @@ class SearchScreen : Fragment() {
             addDelegate(VacanciesDelegate())
         }
 
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(
                 state = Lifecycle.State.STARTED
             ) {
-                viewModel.offerState.collect { res ->
-                    when (res) {
-                        is Resource.Loading -> Log.i("Offers", "Loading offers")
+                viewModel.dataState.collect { res ->
+                    when(res) {
+                        is Resource.Loading -> Log.d("Presentation", "Loading data")
                         is Resource.Error -> Toast.makeText(
                             context,
                             res.error.toString(),
                             Toast.LENGTH_SHORT
                         ).show()
                         is Resource.Success -> {
-                            val offers = res.data
-                            data.concatenateWithOffers(offers)
+                            val currData = res.data
+                            data.concatenate(currData)
                             adapter.submitList(data)
                         }
                     }
                 }
             }
         }
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(
-                state = Lifecycle.State.STARTED
-            ) {
-                viewModel.vacancyState.collect { res ->
-                    when (res) {
-                        is Resource.Loading -> Log.i("Vacancies", "Loading vacancies")
-                        is Resource.Error -> Toast.makeText(
-                            context,
-                            res.error.toString(),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        is Resource.Success -> {
-                            val vacancies = res.data
-                            data.concatenateWithVacancies(vacancies)
-                            adapter.submitList(data)
-                        }
-                    }
-                }
-            }
-        }
-        viewModel.loadOffers()
-        viewModel.loadVacancies()
+
+        viewModel.loadData()
 
         binding.vacancies.adapter = adapter
     }
