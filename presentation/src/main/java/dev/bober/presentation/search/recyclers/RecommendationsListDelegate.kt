@@ -11,6 +11,7 @@ import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.RecommendationBinding
 import dev.bober.presentation.databinding.RecommendationsListBinding
 import dev.bober.presentation.entity.Offer
+import dev.bober.presentation.entity.Offers
 
 class RecommendationsListDelegate : AdapterDelegate {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
@@ -27,16 +28,18 @@ class RecommendationsListDelegate : AdapterDelegate {
         item: DelegateItem,
         position: Int
     ) {
-        (holder as ViewHolder).bind(item as Offer)
+        (holder as ViewHolder).bind(item as Offers)
     }
 
-    override fun isOfViewType(item: DelegateItem): Boolean = item is Offer
+    override fun isOfViewType(item: DelegateItem): Boolean = item is Offers
 
     inner class ViewHolder(private val binding: RecommendationsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(model: Offer) {
+        fun bind(model: Offers) {
+            val adapter = OffersAdapter()
             with(binding) {
-                recommendationsList.adapter = OffersAdapter()
+                recommendationsList.adapter = adapter
+               adapter.submitList(model.id)
             }
         }
     }

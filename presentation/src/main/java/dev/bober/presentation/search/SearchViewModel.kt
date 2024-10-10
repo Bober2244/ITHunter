@@ -3,7 +3,9 @@ package dev.bober.presentation.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.bober.domain.model.OfferModel
+import dev.bober.domain.model.ResultModel
 import dev.bober.domain.model.VacancyModel
+import dev.bober.domain.usecase.GetDataUseCase
 import dev.bober.domain.usecase.GetOffersUseCase
 import dev.bober.domain.usecase.GetVacanciesUseCase
 import dev.bober.utils.Resource
@@ -13,30 +15,17 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val getOffersUseCase: GetOffersUseCase,
-    private val getVacanciesUseCase: GetVacanciesUseCase,
+    private val getDataUseCase: GetDataUseCase
 ) : ViewModel() {
 
-    private val _offersState = MutableStateFlow<Resource<List<OfferModel>>>(Resource.Loading())
-    val offerState: StateFlow<Resource<List<OfferModel>>> get() = _offersState.asStateFlow()
+    private val _dataState = MutableStateFlow<Resource<ResultModel>>(Resource.Loading())
+    val dataState: StateFlow<Resource<ResultModel>> get() = _dataState.asStateFlow()
 
-    private val _vacancyState = MutableStateFlow<Resource<List<VacancyModel>>>(Resource.Loading())
-    val vacancyState: StateFlow<Resource<List<VacancyModel>>> get() = _vacancyState.asStateFlow()
-
-    fun loadOffers() {
+    fun loadData() {
         viewModelScope.launch {
-            getOffersUseCase()
+            getDataUseCase()
                 .collect { res ->
-                    _offersState.value = res
-                }
-        }
-    }
-
-    fun loadVacancies() {
-        viewModelScope.launch {
-            getVacanciesUseCase()
-                .collect { res ->
-                    _vacancyState.value = res
+                    _dataState.value = res
                 }
         }
     }
