@@ -50,7 +50,6 @@ class SearchScreen : Fragment() {
             addDelegate(VacanciesDelegate())
         }
 
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(
                 state = Lifecycle.State.STARTED
