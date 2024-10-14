@@ -2,6 +2,7 @@
 <resources>
     <style name="Theme.ITHunter.Button" parent="Widget.Material3.Button">
         <item name="android:fontFamily">@font/regular</item>
+        <item name="backgroundColor">@color/green</item>
     </style>
 
     <style name="Theme.ITHunter.Card" parent="Widget.Material3.CardView.Elevated">

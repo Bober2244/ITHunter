@@ -2,45 +2,46 @@ package dev.bober.presentation.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.bober.domain.model.OfferModel
+import dev.bober.domain.model.ResultModel
 import dev.bober.domain.model.VacancyModel
-import dev.bober.domain.usecase.GetOffersUseCase
-import dev.bober.domain.usecase.GetVacanciesUseCase
-import dev.bober.presentation.model.Vacancy
+import dev.bober.domain.usecase.AddFavoriteUseCase
+import dev.bober.domain.usecase.GetDataUseCase
+import dev.bober.domain.usecase.RemoveFavoriteUseCase
+import dev.bober.domain.usecase.SaveDataUseCase
 import dev.bober.utils.Resource
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val getOffersUseCase: GetOffersUseCase,
-    private val getVacanciesUseCase: GetVacanciesUseCase,
+    private val getDataUseCase: GetDataUseCase,
+    private val saveDataUseCase: SaveDataUseCase,
+    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val removeFavoriteUseCase: RemoveFavoriteUseCase,
 ) : ViewModel() {
 
-    private val _offersState = MutableStateFlow<Resource<List<OfferModel>>>(Resource.Loading())
-    val offerState: StateFlow<Resource<List<OfferModel>>> get() = _offersState.asStateFlow()
+    private val _dataState = MutableStateFlow<Resource<ResultModel>>(Resource.Loading())
+    val dataState = _dataState.asStateFlow()
 
-    private val _vacancyState = MutableStateFlow<Resource<List<VacancyModel>>>(Resource.Loading())
-    val vacancyState: StateFlow<Resource<List<VacancyModel>>> get() = _vacancyState.asStateFlow()
-
-    fun loadOffers() {
+    init {
         viewModelScope.launch {
-            getOffersUseCase()
+            getDataUseCase()
                 .collect { res ->
-                    _offersState.value = res
+                    _dataState.value = res
+                    res.data?.let { saveDataUseCase(it.offers, it.vacancies) }
                 }
         }
     }
 
-    fun loadVacancies() {
+    fun addFavorite(vacancy: VacancyModel) {
         viewModelScope.launch {
-            getVacanciesUseCase()
-                .collect { res ->
-                    _vacancyState.value = res
-                }
+            addFavoriteUseCase(vacancy)
+        }
+    }
+
+    fun removeFavorite(id: String) {
+        viewModelScope.launch {
+            removeFavoriteUseCase(id)
         }
     }
 }

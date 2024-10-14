@@ -1,4 +1,4 @@
-package dev.bober.presentation.model
+package dev.bober.presentation.entity
 
 import dev.bober.domain.model.AddressModel
 import dev.bober.domain.model.ExperienceModel
@@ -16,8 +16,8 @@ data class Vacancy(
     val isFavorite : Boolean,
     val salary : SalaryModel,
     val schedules : List<String>,
-    val appliedNumber : Int,
-    val description : String,
+    val appliedNumber : Int?,
+    val description : String?,
     val responsibilities : String,
     val questions : List<String>,
 ) : DelegateItem

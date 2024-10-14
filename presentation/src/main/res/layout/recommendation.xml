@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_vacancy_card"
     android:padding="8dp"
-    android:layout_margin="@dimen/screens_inner_padding">
+    android:layout_margin="4dp">
 
     <ImageView
         android:id="@+id/top_icon"
@@ -15,13 +15,14 @@
         android:contentDescription="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@drawable/bg_favorite_icon" />
 
     <TextView
         android:id="@+id/recom_title"
         style="@style/Theme.ITHunter.TextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/top_icon"
         app:layout_constraintTop_toBottomOf="@+id/top_icon"
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="113dp" />
+        app:layout_constraintGuide_begin="120dp" />
 
     <TextView
         android:id="@+id/link_button"

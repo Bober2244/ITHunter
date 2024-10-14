@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -42,10 +42,6 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     //Koin
     implementation(libs.koin.android)
-    //Room
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
     //Flow
     implementation(libs.kotlinx.coroutines.core)
     //Modules
