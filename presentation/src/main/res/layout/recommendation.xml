@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_vacancy_card"
     android:padding="8dp"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:minWidth="140dp"
+    android:minHeight="115dp">
 
     <ImageView
         android:id="@+id/top_icon"
@@ -15,7 +17,7 @@
         android:contentDescription="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/bg_favorite_icon" />
+        tools:src="@drawable/ic_level_up_resume" />
 
     <TextView
         android:id="@+id/recom_title"

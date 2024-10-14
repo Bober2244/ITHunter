@@ -24,7 +24,11 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        if (!currentList[position].id.isNullOrEmpty()) {
+            holder.bind(
+                currentList[position]
+            )
+        }
     }
 
     private class DiffItemUtil : ItemCallback<Offer>() {
@@ -33,7 +37,7 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
         }
 
         override fun areContentsTheSame(oldItem: Offer, newItem: Offer): Boolean {
-            return oldItem.title == newItem.title && oldItem.link == newItem.link
+            return oldItem.toString() == newItem.toString()
         }
     }
 

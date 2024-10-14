@@ -1,5 +1,6 @@
 package dev.bober.presentation.adapter
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 
 class DelegateAdapterItemCallback : DiffUtil.ItemCallback<DelegateItem>() {
@@ -9,6 +10,6 @@ class DelegateAdapterItemCallback : DiffUtil.ItemCallback<DelegateItem>() {
     }
 
     override fun areContentsTheSame(oldItem: DelegateItem, newItem: DelegateItem): Boolean {
-        return oldItem == newItem
+        return oldItem.toString() == newItem.toString()
     }
 }

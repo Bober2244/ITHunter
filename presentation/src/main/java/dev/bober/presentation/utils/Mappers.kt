@@ -22,7 +22,7 @@ fun MutableList<DelegateItem>.concatenate(data: ResultModel) {
     }
     this.add(offersList)
 
-    data.vacancies.forEach { model ->
+    data.vacancies.subList(0, 3).forEach { model ->
         this.add(
             Vacancy(
                 id = model.id,

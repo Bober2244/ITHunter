@@ -31,7 +31,7 @@ class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewHolder>(DiffI
         }
 
         override fun areContentsTheSame(oldItem: Vacancy, newItem: Vacancy): Boolean {
-            return oldItem == newItem
+            return oldItem.toString() == newItem.toString()
         }
     }
 

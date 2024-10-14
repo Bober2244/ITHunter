@@ -62,8 +62,9 @@ class SearchScreen : Fragment() {
                             LENGTH_SHORT
                         ).show()
                         is Resource.Success -> {
+                            val currData = res.data
                             binding.progressBar.visibility = GONE
-                            data.concatenate(res.data)
+                            data.concatenate(currData)
                             adapter.submitList(data)
                         }
                     }
