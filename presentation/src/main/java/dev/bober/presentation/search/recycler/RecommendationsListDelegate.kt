@@ -1,16 +1,11 @@
-package dev.bober.presentation.search.recyclers
+package dev.bober.presentation.search.recycler
 
 import android.view.LayoutInflater
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.bober.presentation.R
 import dev.bober.presentation.adapter.AdapterDelegate
 import dev.bober.presentation.adapter.DelegateItem
-import dev.bober.presentation.databinding.RecommendationBinding
 import dev.bober.presentation.databinding.RecommendationsListBinding
-import dev.bober.presentation.entity.Offer
 import dev.bober.presentation.entity.Offers
 
 class RecommendationsListDelegate : AdapterDelegate {

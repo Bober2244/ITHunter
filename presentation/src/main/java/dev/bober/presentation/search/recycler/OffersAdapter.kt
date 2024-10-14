@@ -1,4 +1,4 @@
-package dev.bober.presentation.search.recyclers
+package dev.bober.presentation.search.recycler
 
 import android.view.LayoutInflater
 import android.view.View.GONE
@@ -53,7 +53,7 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
                 recomTitle.text = item.title
                 linkButton.visibility = if (item.button.isNullOrEmpty()) GONE else VISIBLE
                 linkButton.text = item.button
-                root.visibility = if (item.id in ids) VISIBLE else GONE
+                root.visibility = if (item.id.isNullOrEmpty()) GONE else VISIBLE
             }
         }
 

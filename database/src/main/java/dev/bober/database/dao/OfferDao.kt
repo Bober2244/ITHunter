@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import dev.bober.database.entity.OfferEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OfferDao {
@@ -13,7 +14,7 @@ interface OfferDao {
     suspend fun insertOffers(offers: List<OfferEntity>)
 
     @Query("SELECT * FROM offers")
-    suspend fun getOffers(): List<OfferEntity>
+    fun getOffers(): Flow<List<OfferEntity>>
 
     @Query("SELECT * FROM offers WHERE id = :id")
     suspend fun getOffer(id: String): OfferEntity

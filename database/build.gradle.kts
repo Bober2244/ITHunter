@@ -11,7 +11,11 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     room {
         schemaDirectory("$projectDir/schemas")
@@ -25,4 +29,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     //Koin
     implementation(libs.koin.android)
+    //Features
+    implementation(projects.domain)
 }
