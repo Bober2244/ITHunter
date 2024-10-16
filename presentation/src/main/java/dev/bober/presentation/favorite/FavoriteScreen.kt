@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.databinding.FavoriteScreenBinding
 import dev.bober.presentation.favorite.recycler.FavoritesAdapter
+import dev.bober.presentation.utils.checkNumbers
 import dev.bober.presentation.utils.toFavoritesList
 import dev.bober.utils.Resource
 import kotlinx.coroutines.launch
@@ -72,11 +73,5 @@ class FavoriteScreen : Fragment() {
         super.onDestroyView()
         binding.favorites.adapter = null
         _binding = null
-    }
-
-    private fun checkNumbers(number: Int): String {
-        return if (number % 10 == 1) "$number вакансия"
-        else if (number % 10 in 2..4) "$number вакансии"
-        else "$number вакансий"
     }
 }

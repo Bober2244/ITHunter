@@ -3,6 +3,7 @@ package dev.bober.presentation.utils
 import dev.bober.domain.model.ResultModel
 import dev.bober.domain.model.VacancyModel
 import dev.bober.presentation.adapter.DelegateItem
+import dev.bober.presentation.entity.MoreButton
 import dev.bober.presentation.entity.Offer
 import dev.bober.presentation.entity.Offers
 import dev.bober.presentation.entity.Vacancy
@@ -42,6 +43,9 @@ fun MutableList<DelegateItem>.concatenate(data: ResultModel) {
             )
         )
     }
+    this.add(
+        MoreButton.create(1, "Еще ${checkNumbers(data.vacancies.size - 3)}")
+    )
 }
 
 fun List<VacancyModel>.toFavoritesList(): List<Vacancy> {

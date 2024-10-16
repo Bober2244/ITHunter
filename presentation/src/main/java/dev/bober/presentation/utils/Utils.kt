@@ -16,3 +16,11 @@ inline fun <T> View.checkField(field : Any?, block : () -> T) {
         visibility = GONE
     }
 }
+/**
+ * @param number is a number that will be checked
+ */
+fun checkNumbers(number: Int): String {
+    return if (number % 10 == 1) "$number вакансия"
+    else if (number % 10 in 2..4) "$number вакансии"
+    else "$number вакансий"
+}

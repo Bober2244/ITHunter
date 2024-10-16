@@ -10,6 +10,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.bober.ithunter.databinding.ActivityMainBinding
+import dev.bober.presentation.R.id.navigation_search
+import dev.bober.presentation.R.id.navigation_favorite
+import dev.bober.presentation.R.id.navigation_response
+import dev.bober.presentation.R.id.navigation_messages
+import dev.bober.presentation.R.id.navigation_profile
+import dev.bober.utils.badgeSetup
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,11 +52,11 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                dev.bober.presentation.R.id.navigation_search,
-                dev.bober.presentation.R.id.navigation_favorite,
-                dev.bober.presentation.R.id.navigation_response,
-                dev.bober.presentation.R.id.navigation_messages,
-                dev.bober.presentation.R.id.navigation_profile,
+                navigation_search,
+                navigation_favorite,
+                navigation_response,
+                navigation_messages,
+                navigation_profile,
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

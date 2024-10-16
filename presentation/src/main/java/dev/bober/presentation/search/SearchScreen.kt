@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.adapter.DelegationAdapter
 import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.SearchScreenBinding
+import dev.bober.presentation.search.recycler.MoreButtonAdapter
 import dev.bober.presentation.search.recycler.RecommendationsListDelegate
 import dev.bober.presentation.search.recycler.VacanciesDelegate
 import dev.bober.presentation.utils.concatenate
@@ -47,6 +48,7 @@ class SearchScreen : Fragment() {
         adapter.apply {
             addDelegate(RecommendationsListDelegate())
             addDelegate(VacanciesDelegate())
+            addDelegate(MoreButtonAdapter())
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
