@@ -1,4 +1,4 @@
-package dev.bober.presentation.favorite
+package dev.bober.presentation.screens.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.databinding.FavoriteScreenBinding
-import dev.bober.presentation.favorite.recycler.FavoritesAdapter
+import dev.bober.presentation.screens.favorite.recycler.FavoritesAdapter
 import dev.bober.presentation.utils.checkNumbers
 import dev.bober.presentation.utils.toFavoritesList
 import dev.bober.utils.Resource

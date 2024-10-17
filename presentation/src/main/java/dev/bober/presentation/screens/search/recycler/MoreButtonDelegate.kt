@@ -1,4 +1,4 @@
-package dev.bober.presentation.search.recycler
+package dev.bober.presentation.screens.search.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,16 +8,14 @@ import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.MoreButtonItemBinding
 import dev.bober.presentation.entity.MoreButton
 
-class MoreButtonAdapter : AdapterDelegate {
+class MoreButtonDelegate : AdapterDelegate {
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
-        return ViewHolder(
-            MoreButtonItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        val binding = MoreButtonItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        binding.moreButton.setOnClickListener {
+            //TODO("открытие другого экрана")
+        }
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(

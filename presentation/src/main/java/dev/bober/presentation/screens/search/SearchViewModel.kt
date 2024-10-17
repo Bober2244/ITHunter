@@ -1,5 +1,7 @@
-package dev.bober.presentation.search
+package dev.bober.presentation.screens.search
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.bober.domain.model.ResultModel
@@ -13,7 +15,6 @@ import dev.bober.utils.Resource
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -37,6 +38,8 @@ class SearchViewModel(
         }
     }
 
+    fun openLink(link: String) = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+
     fun addFavorite(vacancy: VacancyModel) {
         viewModelScope.launch {
             addFavoriteUseCase(vacancy)
@@ -50,7 +53,7 @@ class SearchViewModel(
     }
 
     suspend fun getFavoritesCount(): Int {
-        var count: Int = 0
+        var count = 0
         viewModelScope.async {
             getFavoritesCountUseCase()
                 .collect { res ->

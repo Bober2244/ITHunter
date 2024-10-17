@@ -1,4 +1,4 @@
-package dev.bober.presentation.search.recycler
+package dev.bober.presentation.screens.search.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,9 @@ import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.RecommendationsListBinding
 import dev.bober.presentation.entity.Offers
 
-class RecommendationsListDelegate : AdapterDelegate {
+class RecommendationsListDelegate(
+    val onClick: (link: String) -> Unit
+) : AdapterDelegate {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder =
         ViewHolder(
             RecommendationsListBinding.inflate(
@@ -31,10 +33,13 @@ class RecommendationsListDelegate : AdapterDelegate {
     inner class ViewHolder(private val binding: RecommendationsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: Offers) {
-            val adapter = OffersAdapter()
+            val adapter = OffersAdapter(onClick = {
+                onClick(it)
+                }
+            )
             with(binding) {
                 recommendationsList.adapter = adapter
-               adapter.submitList(model.id)
+                adapter.submitList(model.id)
             }
         }
     }

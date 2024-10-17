@@ -1,4 +1,4 @@
-package dev.bober.presentation.favorite
+package dev.bober.presentation.screens.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

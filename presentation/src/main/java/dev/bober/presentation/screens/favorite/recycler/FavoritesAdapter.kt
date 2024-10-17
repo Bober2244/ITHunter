@@ -1,4 +1,4 @@
-package dev.bober.presentation.favorite.recycler
+package dev.bober.presentation.screens.favorite.recycler
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

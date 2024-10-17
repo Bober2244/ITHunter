@@ -1,4 +1,4 @@
-package dev.bober.presentation.search
+package dev.bober.presentation.screens.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +15,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dev.bober.presentation.adapter.DelegationAdapter
 import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.SearchScreenBinding
-import dev.bober.presentation.search.recycler.MoreButtonAdapter
-import dev.bober.presentation.search.recycler.RecommendationsListDelegate
-import dev.bober.presentation.search.recycler.VacanciesDelegate
+import dev.bober.presentation.screens.search.recycler.MoreButtonDelegate
+import dev.bober.presentation.screens.search.recycler.RecommendationsListDelegate
+import dev.bober.presentation.screens.search.recycler.VacanciesDelegate
 import dev.bober.presentation.utils.concatenate
 import dev.bober.utils.Resource
 import kotlinx.coroutines.launch
@@ -46,9 +46,15 @@ class SearchScreen : Fragment() {
         val data = mutableListOf<DelegateItem>()
 
         adapter.apply {
-            addDelegate(RecommendationsListDelegate())
+            addDelegate(
+                RecommendationsListDelegate(
+                    onClick = {
+                        startActivity(viewModel.openLink(link = it))
+                    }
+                )
+            )
             addDelegate(VacanciesDelegate())
-            addDelegate(MoreButtonAdapter())
+            addDelegate(MoreButtonDelegate())
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

@@ -15,7 +15,6 @@ import dev.bober.presentation.R.id.navigation_favorite
 import dev.bober.presentation.R.id.navigation_response
 import dev.bober.presentation.R.id.navigation_messages
 import dev.bober.presentation.R.id.navigation_profile
-import dev.bober.utils.badgeSetup
 
 class MainActivity : AppCompatActivity() {
 

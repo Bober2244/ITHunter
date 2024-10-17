@@ -1,4 +1,4 @@
-package dev.bober.presentation.response
+package dev.bober.presentation.screens.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.bober.presentation.R
-import dev.bober.presentation.databinding.ResponseScreenBinding
+import dev.bober.presentation.databinding.ProfileScreenBinding
 
-class ResponseScreen : Fragment(R.layout.response_screen) {
+class ProfileScreen : Fragment(R.layout.profile_screen) {
 
-    private var _binding : ResponseScreenBinding? = null
+    private var _binding : ProfileScreenBinding? = null
     private val binding get() = requireNotNull(_binding!!) {"Binding wasn't initialized"}
 
     override fun onCreateView(

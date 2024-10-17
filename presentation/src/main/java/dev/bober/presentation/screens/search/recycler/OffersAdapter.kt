@@ -1,4 +1,4 @@
-package dev.bober.presentation.search.recycler
+package dev.bober.presentation.screens.search.recycler
 
 import android.view.LayoutInflater
 import android.view.View.GONE
@@ -11,7 +11,9 @@ import dev.bober.presentation.R
 import dev.bober.presentation.databinding.RecommendationBinding
 import dev.bober.presentation.entity.Offer
 
-class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil()) {
+class OffersAdapter(
+    val onClick: (link: String) -> Unit
+) : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -20,15 +22,11 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
                 parent,
                 false
             )
-        ) //TODO("открывать ссылку в интернете")
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (!currentList[position].id.isNullOrEmpty()) {
-            holder.bind(
-                currentList[position]
-            )
-        }
+        holder.bind(currentList[position])
     }
 
     private class DiffItemUtil : ItemCallback<Offer>() {
@@ -58,6 +56,9 @@ class OffersAdapter : ListAdapter<Offer, OffersAdapter.ViewHolder>(DiffItemUtil(
                 linkButton.visibility = if (item.button.isNullOrEmpty()) GONE else VISIBLE
                 linkButton.text = item.button
                 root.visibility = if (item.id.isNullOrEmpty()) GONE else VISIBLE
+                root.setOnClickListener {
+                    onClick(item.link)
+                }
             }
         }
 

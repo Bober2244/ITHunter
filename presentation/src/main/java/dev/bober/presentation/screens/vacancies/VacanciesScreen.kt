@@ -1,25 +1,30 @@
-package dev.bober.presentation.messages
+package dev.bober.presentation.screens.vacancies
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dev.bober.presentation.R
-import dev.bober.presentation.databinding.MessagesScreenBinding
+import dev.bober.presentation.databinding.VacanciesScreenBinding
 
-class MessagesScreen : Fragment(R.layout.messages_screen) {
+class VacanciesScreen : Fragment() {
 
-    private var _binding : MessagesScreenBinding? = null
+    private var _binding : VacanciesScreenBinding? = null
     private val binding get() = requireNotNull(_binding!!) {"Binding wasn't initialized"}
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    ): View {
+        _binding = VacanciesScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //TODO()
     }
 
     override fun onDestroyView() {

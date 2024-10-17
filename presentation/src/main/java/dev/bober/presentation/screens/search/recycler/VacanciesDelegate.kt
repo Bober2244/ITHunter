@@ -1,4 +1,4 @@
-package dev.bober.presentation.search.recycler
+package dev.bober.presentation.screens.search.recycler
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -18,7 +18,7 @@ class VacanciesDelegate : AdapterDelegate {
                 isSelected = !isSelected
             }
         }
-        return ViewHolder(binding = item)
+        return ViewHolder(item)
     }
 
     override fun onBindViewHolder(
