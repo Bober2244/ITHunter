@@ -2,7 +2,10 @@ package dev.bober.database.repository
 
 import dev.bober.database.dao.OfferDao
 import dev.bober.database.dao.VacancyDao
+import dev.bober.database.entity.AddressEntity
+import dev.bober.database.entity.ExperienceEntity
 import dev.bober.database.entity.OfferEntity
+import dev.bober.database.entity.SalaryEntity
 import dev.bober.database.entity.VacancyEntity
 import dev.bober.domain.model.OfferModel
 import dev.bober.domain.model.VacancyModel
@@ -26,12 +29,17 @@ class LocalRepositoryImpl(
                     id = vacancy.id,
                     lookingNumber = vacancy.lookingNumber,
                     title = vacancy.title,
-                    address = vacancy.address.town,
+                    address = AddressEntity(vacancy.address.town, vacancy.address.street, vacancy.address.house),
                     company = vacancy.company,
-                    experience = vacancy.experience.previewText,
+                    experience = ExperienceEntity(vacancy.experience.previewText, vacancy.experience.text),
                     publishedDate = vacancy.publishedDate,
                     isFavorite = vacancy.isFavorite,
-                    salary = vacancy.salary.short ?: vacancy.salary.full
+                    salary = SalaryEntity(vacancy.salary.short, vacancy.salary.full),
+                    schedules = vacancy.schedules,
+                    appliedNumber = vacancy.appliedNumber,
+                    description = vacancy.description,
+                    questions = vacancy.questions,
+                    responsibilities = vacancy.responsibilities
                 )
             }
         )
@@ -43,12 +51,17 @@ class LocalRepositoryImpl(
                 id = vacancy.id,
                 lookingNumber = vacancy.lookingNumber,
                 title = vacancy.title,
-                address = vacancy.address.town,
+                address = AddressEntity(vacancy.address.town, vacancy.address.street, vacancy.address.house),
                 company = vacancy.company,
-                experience = vacancy.experience.previewText,
+                experience = ExperienceEntity(vacancy.experience.previewText, vacancy.experience.text),
                 publishedDate = vacancy.publishedDate,
                 isFavorite = vacancy.isFavorite,
-                salary = vacancy.salary.short ?: vacancy.salary.full
+                salary = SalaryEntity(vacancy.salary.short, vacancy.salary.full),
+                schedules = vacancy.schedules,
+                appliedNumber = vacancy.appliedNumber,
+                description = vacancy.description,
+                questions = vacancy.questions,
+                responsibilities = vacancy.responsibilities
             )
         )
     }

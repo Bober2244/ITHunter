@@ -22,12 +22,12 @@ class FavoriteViewModel(
     private val _vacancyState = MutableStateFlow<Resource<List<VacancyModel>>>(Resource.Loading())
     val vacancyState = _vacancyState.asStateFlow()
 
-    fun loadVacancies() {
+    init {
         viewModelScope.launch {
             getVacanciesUseCase()
                 .collect { res ->
                     _vacancyState.value = res
-            }
+                }
         }
     }
 

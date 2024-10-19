@@ -10,10 +10,9 @@
     <TextView
         android:id="@+id/textView4"
         style="@style/Theme.ITHunter.LargeTextStyle"
-        android:text="@string/title_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:text="@string/title_favorite"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

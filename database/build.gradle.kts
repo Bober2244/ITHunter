@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidX.room)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -31,4 +32,6 @@ dependencies {
     implementation(libs.koin.android)
     //Features
     implementation(projects.domain)
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
 }

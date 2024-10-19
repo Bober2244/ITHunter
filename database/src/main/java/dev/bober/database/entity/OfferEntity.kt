@@ -11,13 +11,4 @@ data class OfferEntity(
     val title : String,
     val button : String?,
     val link : String,
-) {
-    fun toModel(): OfferModel {
-        return OfferModel(
-            id = id,
-            title = title,
-            button = button,
-            link = link
-        )
-    }
-}
+)

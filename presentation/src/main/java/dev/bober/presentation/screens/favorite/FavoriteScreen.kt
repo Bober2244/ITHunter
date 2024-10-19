@@ -64,9 +64,8 @@ class FavoriteScreen : Fragment() {
                 }
             }
         }
-        binding.favorites.adapter = adapter
 
-        viewModel.loadVacancies()
+        binding.favorites.adapter = adapter
     }
 
     override fun onDestroyView() {
