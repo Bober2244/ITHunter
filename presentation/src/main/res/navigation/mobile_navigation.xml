@@ -9,7 +9,13 @@
         android:id="@+id/navigation_search"
         android:name="dev.bober.presentation.screens.search.SearchScreen"
         android:label="@string/title_search"
-        tools:layout="@layout/search_screen" />
+        tools:layout="@layout/search_screen" >
+        <action
+            android:id="@+id/action_navigation_search_to_vacanciesScreen"
+            app:destination="@id/vacanciesScreen"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"
@@ -34,4 +40,9 @@
         android:name="dev.bober.presentation.screens.profile.ProfileScreen"
         android:label="@string/title_profile"
         tools:layout="@layout/profile_screen" />
+    <fragment
+        android:id="@+id/vacanciesScreen"
+        android:name="dev.bober.presentation.screens.vacancies.VacanciesScreen"
+        android:label="VacanciesScreen"
+        tools:layout="@layout/vacancies_screen" />
 </navigation>

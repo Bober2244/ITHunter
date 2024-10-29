@@ -10,9 +10,10 @@ import dev.bober.presentation.databinding.VacancyCardBinding
 import dev.bober.presentation.entity.Vacancy
 import dev.bober.presentation.utils.checkField
 
-class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewHolder>(DiffItemUtil()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewItemHolder>(DiffItemUtil()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewItemHolder {
+        return ViewItemHolder(
             VacancyCardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -21,7 +22,7 @@ class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewHolder>(DiffI
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewItemHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
@@ -35,7 +36,7 @@ class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewHolder>(DiffI
         }
     }
 
-    inner class ViewHolder(private val binding: VacancyCardBinding) :
+    inner class ViewItemHolder(private val binding: VacancyCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import dev.bober.presentation.databinding.VacanciesScreenBinding
 
 class VacanciesScreen : Fragment() {
@@ -24,6 +25,9 @@ class VacanciesScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.arrowBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
         //TODO()
     }
 

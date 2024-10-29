@@ -55,7 +55,7 @@ class OffersAdapter(
                 recomTitle.text = item.title
                 linkButton.visibility = if (item.button.isNullOrEmpty()) GONE else VISIBLE
                 linkButton.text = item.button
-                root.visibility = if (item.id.isNullOrEmpty()) GONE else VISIBLE
+                root.visibility = if (item.id.isEmpty()) GONE else VISIBLE
                 root.setOnClickListener {
                     onClick(item.link)
                 }

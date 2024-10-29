@@ -9,6 +9,7 @@ class DelegateAdapterItemCallback : DiffUtil.ItemCallback<DelegateItem>() {
         return oldItem::class == newItem::class && oldItem.id == newItem.id
     }
 
+    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: DelegateItem, newItem: DelegateItem): Boolean {
         return oldItem.toString() == newItem.toString()
     }

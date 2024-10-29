@@ -1,5 +1,6 @@
 package dev.bober.presentation.screens.search
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import dev.bober.presentation.R
 import dev.bober.presentation.adapter.DelegationAdapter
 import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.SearchScreenBinding
 import dev.bober.presentation.screens.search.recycler.MoreButtonDelegate
+import dev.bober.presentation.screens.search.recycler.OnMoreButtonClickListener
 import dev.bober.presentation.screens.search.recycler.RecommendationsListDelegate
 import dev.bober.presentation.screens.search.recycler.VacanciesDelegate
 import dev.bober.presentation.utils.concatenate
@@ -25,10 +30,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchScreen : Fragment() {
 
-    private var _binding : SearchScreenBinding? = null
-    private val binding get() = requireNotNull(_binding!!) {"Binding wasn't initialized"}
+    private var _binding: SearchScreenBinding? = null
+    private val binding get() = requireNotNull(_binding!!) { "Binding wasn't initialized" }
 
-    private val viewModel : SearchViewModel by viewModel()
+    private val viewModel: SearchViewModel by viewModel()
     private val adapter by lazy { DelegationAdapter() }
 
     override fun onCreateView(
@@ -54,7 +59,12 @@ class SearchScreen : Fragment() {
                 )
             )
             addDelegate(VacanciesDelegate())
-            addDelegate(MoreButtonDelegate())
+            addDelegate(MoreButtonDelegate(object : OnMoreButtonClickListener {
+                @SuppressLint("ResourceType")
+                override fun onClick() {
+                    findNavController().navigate(R.id.action_navigation_search_to_vacanciesScreen)
+                }
+            }))
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -62,13 +72,14 @@ class SearchScreen : Fragment() {
                 state = Lifecycle.State.CREATED
             ) {
                 viewModel.dataState.collect { res ->
-                    when(res) {
+                    when (res) {
                         is Resource.Loading -> binding.progressBar.visibility = VISIBLE
                         is Resource.Error -> Toast.makeText(
                             context,
                             res.error.toString(),
                             LENGTH_SHORT
                         ).show()
+
                         is Resource.Success -> {
                             val currData = res.data
                             binding.progressBar.visibility = GONE

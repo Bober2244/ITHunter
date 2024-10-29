@@ -8,12 +8,14 @@ import dev.bober.presentation.adapter.DelegateItem
 import dev.bober.presentation.databinding.MoreButtonItemBinding
 import dev.bober.presentation.entity.MoreButton
 
-class MoreButtonDelegate : AdapterDelegate {
+class MoreButtonDelegate(
+    private val clickListener: OnMoreButtonClickListener
+) : AdapterDelegate {
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val binding = MoreButtonItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         binding.moreButton.setOnClickListener {
-            //TODO("открытие другого экрана")
+            clickListener.onClick()
         }
         return ViewHolder(binding)
     }
@@ -37,4 +39,8 @@ class MoreButtonDelegate : AdapterDelegate {
             }
         }
     }
+}
+
+interface OnMoreButtonClickListener {
+    fun onClick()
 }
