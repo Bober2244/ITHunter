@@ -5,16 +5,9 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.bober.ithunter.databinding.ActivityMainBinding
-import dev.bober.presentation.R.id.navigation_search
-import dev.bober.presentation.R.id.navigation_favorite
-import dev.bober.presentation.R.id.navigation_response
-import dev.bober.presentation.R.id.navigation_messages
-import dev.bober.presentation.R.id.navigation_profile
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +19,6 @@ class MainActivity : AppCompatActivity() {
             statusBarStyle = SystemBarStyle.dark(getColor(dev.bober.presentation.R.color.black)),
         )
         super.onCreate(savedInstanceState)
-        hideActionBar()
         setupActivity()
 
     }
@@ -34,10 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun hideActionBar(){
-        supportActionBar?.hide()
     }
 
     private fun setupActivity(){
@@ -49,16 +37,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                navigation_search,
-                navigation_favorite,
-                navigation_response,
-                navigation_messages,
-                navigation_profile,
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }

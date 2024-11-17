@@ -12,6 +12,7 @@
         android:id="@+id/more_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bg_more_button"
         android:fontFamily="@font/semibold"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"

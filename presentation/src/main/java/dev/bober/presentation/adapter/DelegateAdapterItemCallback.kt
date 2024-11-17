@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 class DelegateAdapterItemCallback : DiffUtil.ItemCallback<DelegateItem>() {
 
     override fun areItemsTheSame(oldItem: DelegateItem, newItem: DelegateItem): Boolean {
-        return oldItem::class == newItem::class && oldItem.id == newItem.id
+        return oldItem == newItem
     }
 
     @SuppressLint("DiffUtilEquals")

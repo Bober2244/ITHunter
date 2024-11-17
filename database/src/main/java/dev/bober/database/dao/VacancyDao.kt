@@ -16,17 +16,17 @@ interface VacancyDao {
     suspend fun insertVacancy(vacancy: VacancyEntity)
 
     @Query("SELECT * FROM vacancies")
-    fun getVacancies(): Flow<List<VacancyEntity>>
+    suspend fun getVacancies(): List<VacancyEntity>
 
     @Query("SELECT * FROM vacancies WHERE id = :id")
     suspend fun getVacancy(id: String): VacancyEntity
 
     @Query("SELECT * FROM vacancies WHERE isFavorite = 1")
-    fun getFavorites(): Flow<List<VacancyEntity>>
+    suspend fun getFavorites(): List<VacancyEntity>
 
     @Query("DELETE FROM vacancies WHERE id = :id")
     suspend fun removeFavorite(id: String)
 
     @Query("SELECT COUNT(*) FROM vacancies WHERE isFavorite = 1")
-    fun getFavoriteCount(): Flow<Int>
+    suspend fun getFavoriteCount(): Int
 }

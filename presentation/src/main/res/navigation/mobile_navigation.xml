@@ -44,5 +44,9 @@
         android:id="@+id/vacanciesScreen"
         android:name="dev.bober.presentation.screens.vacancies.VacanciesScreen"
         android:label="VacanciesScreen"
-        tools:layout="@layout/vacancies_screen" />
+        tools:layout="@layout/vacancies_screen" >
+        <argument
+            android:name="vacancies"
+            app:argType="dev.bober.presentation.entity.VacanciesList" />
+    </fragment>
 </navigation>

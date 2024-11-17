@@ -1,31 +1,28 @@
 package dev.bober.presentation.screens.vacancies.recycler
 
 import android.annotation.SuppressLint
-import android.media.browse.MediaBrowser.ItemCallback
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import dev.bober.presentation.databinding.VacanciesScreenBinding
 import dev.bober.presentation.databinding.VacancyCardBinding
-import dev.bober.presentation.entity.Offer
 import dev.bober.presentation.entity.Vacancy
 import dev.bober.presentation.utils.checkField
 
-class VacanciesAdapter : ListAdapter<Vacancy, VacanciesAdapter.ViewHolder>(DiffItemUtil()) {
+class VacanciesAdapter : ListAdapter<Vacancy, VacanciesAdapter.ViewItemHolder>(DiffItemUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewItemHolder {
         val item = VacancyCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         with(item.favoriteIcon) {
             setOnClickListener {
                 isSelected = !isSelected
             }
         }
-        return ViewHolder(item)
+        return ViewItemHolder(item)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewItemHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
@@ -39,9 +36,11 @@ class VacanciesAdapter : ListAdapter<Vacancy, VacanciesAdapter.ViewHolder>(DiffI
         }
     }
 
-    inner class ViewHolder(private val binding: VacancyCardBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewItemHolder(private val binding: VacancyCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
         @SuppressLint("SetTextI18n")
-        fun bind(item: Vacancy){
+        fun bind(item: Vacancy) {
             with(binding) {
                 viewers.checkField(item.lookingNumber) {
                     if ((item.lookingNumber?.rem(10)) in 2..4) {

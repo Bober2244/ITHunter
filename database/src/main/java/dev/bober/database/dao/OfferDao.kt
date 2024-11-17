@@ -14,7 +14,7 @@ interface OfferDao {
     suspend fun insertOffers(offers: List<OfferEntity>)
 
     @Query("SELECT * FROM offers")
-    fun getOffers(): Flow<List<OfferEntity>>
+    fun getOffers(): List<OfferEntity>
 
     @Query("SELECT * FROM offers WHERE id = :id")
     suspend fun getOffer(id: String): OfferEntity

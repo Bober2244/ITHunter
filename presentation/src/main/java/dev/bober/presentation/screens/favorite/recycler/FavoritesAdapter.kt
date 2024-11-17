@@ -3,7 +3,7 @@ package dev.bober.presentation.screens.favorite.recycler
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.bober.presentation.databinding.VacancyCardBinding
@@ -13,22 +13,22 @@ import dev.bober.presentation.utils.checkField
 class FavoritesAdapter : ListAdapter<Vacancy, FavoritesAdapter.ViewItemHolder>(DiffItemUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewItemHolder {
-        return ViewItemHolder(
-            VacancyCardBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        val item = VacancyCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        with(item.favoriteIcon) {
+            setOnClickListener {
+                isSelected = !isSelected
+            }
+        }
+        return ViewItemHolder(item)
     }
 
     override fun onBindViewHolder(holder: ViewItemHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
-    private class DiffItemUtil : ItemCallback<Vacancy>() {
+    private class DiffItemUtil : DiffUtil.ItemCallback<Vacancy>() {
         override fun areItemsTheSame(oldItem: Vacancy, newItem: Vacancy): Boolean {
-            return oldItem::class == newItem::class && oldItem.id == newItem.id
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: Vacancy, newItem: Vacancy): Boolean {

@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/all_vacancies_size"
         style="@style/Theme.ITHunter.MediumTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,9 +71,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:text="@string/filter_text"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/all_vacancies_size"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/all_vacancies_size" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -95,7 +95,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/all_vacancies_size"
         tools:itemCount="3"
         tools:listitem="@layout/vacancy_card" />
 

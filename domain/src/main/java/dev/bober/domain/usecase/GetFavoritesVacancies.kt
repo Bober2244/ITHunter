@@ -1,20 +1,22 @@
 package dev.bober.domain.usecase
 
+import dev.bober.domain.model.VacancyModel
 import dev.bober.domain.repository.LocalRepository
 import dev.bober.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class GetFavoritesCountUseCase(
+class GetFavoritesVacancies(
     private val repository: LocalRepository
 ) {
-    suspend operator fun invoke(): Flow<Resource<Int>> {
-        return repository.getFavoritesCount().map {
+    suspend operator fun invoke (): Flow<Resource<List<VacancyModel>>> {
+        return repository.getFavorites().map {
             when (it) {
                 is Resource.Loading -> Resource.Loading()
-                is Resource.Error -> Resource.Error(it.error)
                 is Resource.Success -> Resource.Success(it.data)
+                is Resource.Error -> Resource.Error(it.error)
             }
         }
+
     }
 }

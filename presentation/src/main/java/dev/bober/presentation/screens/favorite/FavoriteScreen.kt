@@ -56,7 +56,7 @@ class FavoriteScreen : Fragment() {
                         is Resource.Success -> {
                             val currData = res.data.toFavoritesList()
                             binding.favoritesProgress.visibility = GONE
-                            binding.vacNumber.text = checkNumbers(currData.size)
+                            binding.vacNumber.text = checkNumbers(viewModel.getFavoritesCount())
 
                             adapter.submitList(currData)
                         }

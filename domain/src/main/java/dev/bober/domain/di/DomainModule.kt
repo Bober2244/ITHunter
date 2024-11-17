@@ -3,6 +3,7 @@ package dev.bober.domain.di
 import dev.bober.domain.usecase.AddFavoriteUseCase
 import dev.bober.domain.usecase.GetDataUseCase
 import dev.bober.domain.usecase.GetFavoritesCountUseCase
+import dev.bober.domain.usecase.GetFavoritesVacancies
 import dev.bober.domain.usecase.GetVacanciesUseCase
 import dev.bober.domain.usecase.RemoveFavoriteUseCase
 import dev.bober.domain.usecase.SaveDataUseCase
@@ -17,4 +18,5 @@ val domainModule = module {
     factoryOf(::AddFavoriteUseCase)
     factoryOf(::RemoveFavoriteUseCase)
     factoryOf(::GetFavoritesCountUseCase)
+    factoryOf(::GetFavoritesVacancies)
 }

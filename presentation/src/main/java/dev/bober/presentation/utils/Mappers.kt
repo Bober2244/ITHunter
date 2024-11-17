@@ -52,28 +52,50 @@ fun MutableList<DelegateItem>.concatenate(data: ResultModel) {
 
 fun List<VacancyModel>.toFavoritesList(): List<Vacancy> {
     val vacancies = mutableListOf<Vacancy>()
-    this.asSequence()
-        .forEach { model ->
-            if (model.isFavorite) {
-                vacancies.add(
-                    Vacancy(
-                        id = model.id,
-                        lookingNumber = model.lookingNumber,
-                        title = model.title,
-                        address = model.address,
-                        company = model.company,
-                        experience = model.experience,
-                        publishedDate = model.publishedDate,
-                        isFavorite = true,
-                        salary = model.salary,
-                        schedules = model.schedules,
-                        appliedNumber = model.appliedNumber ?: 0,
-                        description = model.description ?: "",
-                        responsibilities = model.responsibilities,
-                        questions = model.questions,
-                    )
+    this.forEach { model ->
+        if (model.isFavorite) {
+            vacancies.add(
+                Vacancy(
+                    id = model.id,
+                    lookingNumber = model.lookingNumber,
+                    title = model.title,
+                    address = model.address,
+                    company = model.company,
+                    experience = model.experience,
+                    publishedDate = model.publishedDate,
+                    isFavorite = true,
+                    salary = model.salary,
+                    schedules = model.schedules,
+                    appliedNumber = model.appliedNumber ?: 0,
+                    description = model.description ?: "",
+                    responsibilities = model.responsibilities,
+                    questions = model.questions,
                 )
-            }
+            )
         }
+    }
     return vacancies
+}
+
+fun MutableList<Vacancy>.toVacancyList(data: ResultModel) {
+    data.vacancies.forEach { model ->
+        this.add(
+            Vacancy(
+                id = model.id,
+                lookingNumber = model.lookingNumber,
+                title = model.title,
+                address = model.address,
+                company = model.company,
+                experience = model.experience,
+                publishedDate = model.publishedDate,
+                isFavorite = model.isFavorite,
+                salary = model.salary,
+                schedules = model.schedules,
+                appliedNumber = model.appliedNumber ?: 0,
+                description = model.description ?: "",
+                responsibilities = model.responsibilities,
+                questions = model.questions,
+            )
+        )
+    }
 }
